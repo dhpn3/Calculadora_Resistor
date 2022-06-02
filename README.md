@@ -1,0 +1,1 @@
+O objetivo do repositório é, repentinamente, refatorar e aperfeiçoar o meu próprio algoritmo. No futuro, refatorando com headers e structs em C; simplificando em Python, refazendo usando POO em C++ e, principalmente, também aprender e usar interface gráfica.
