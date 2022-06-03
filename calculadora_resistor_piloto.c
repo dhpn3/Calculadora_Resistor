@@ -5,8 +5,15 @@
 #include <math.h>
 #include <stdlib.h>
 
-int display(int result){
-    printf("\n\t O resistor %c: %d ohms\n", 130, result); //desconsiderando a potência e a tolerância de 5% ou 10%
+int display(double result){
+    //teste se o resistor é ohms ou kiloohms, desconsiderando a potência e a tolerância de 5% ou 10%
+    if(result > 1000){
+        double ohms = (result/1000);
+        printf("\n\t O valor do resistor %c: %.0f kiloohms\n", 130, ohms);
+    }
+    else{
+        printf("\n\t O valor do resistor %c: %.2f ohms\n", 130, result);
+    }
     system("pause");
     return 0;
 }
@@ -25,7 +32,7 @@ void concatena_valores(int first, int second, int third, int fourth, int opcao){
     }
     else{
         printf("\nQuantidade invalida. Tente novamente...\n");
-        return main();
+        main();
     }
    display(result);
 }
@@ -55,7 +62,7 @@ int menu_cor(char *cor){
     else if(strcmp(branco, cor) == 0) return 9;
     else{
         printf("\nCor inexistente. Tente novamente...\n");
-        return main();
+        main();
     }
 }
 
@@ -105,7 +112,27 @@ void menu_inicial(){
 }
 
 int main(){
-    printf("\n\tCalculadora para cores de resistores");
-    menu_inicial();
+
+    int escolha;
+    do{
+        printf("\n\tCalculadora para cores de resistores\n");
+        printf("\n\tMenu:\t");
+        printf("\n\t0 - Sair\n\t1 - Conversao de cores em valor\n\t2 - Conversao de valor para cores\n\n\t> ");
+        scanf("%d", &escolha);
+        switch(escolha){
+            case 0:
+                printf("\nSaindo...");
+                break;
+            case 1:
+                menu_inicial();
+                break;
+            case 2:
+                //fazer ainda
+                break;
+            default:
+                printf("\nOpcao invalida. Tente novamente...\n");
+        }
+    }while(escolha!=0);
+
     return 0;
 }
