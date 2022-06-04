@@ -7,7 +7,7 @@
 
 int display(double result){
     //teste se o resistor é ohms ou kiloohms, desconsiderando a potência e a tolerância de 5% ou 10%
-    if(result > 1000){
+    if(result >= 1000){
         double ohms = (result/1000);
         printf("\n\t O valor do resistor %c: %.0f kiloohms\n", 130, ohms);
     }
@@ -62,9 +62,11 @@ int menu_cor(char *cor){
     else if(strcmp(branco, cor) == 0) return 9;
     else{
         printf("\nCor inexistente. Tente novamente...\n");
+        //
         main();
     }
 }
+
 
 void colors_input(int opcao){
     char firstcolor[20];    //most significant value | string
@@ -100,6 +102,9 @@ void menu_inicial(){
     int opcao;
     printf("\nQuantidade de faixas para o resistor (3 ou 4): ");
     scanf("%d", &opcao);
+
+    // validar se a opcao é um int, se não for F
+
     printf("\n\tCalculadora para cores de resistores de %d faixas\n\t\t\t", opcao);
     printf("%c%c%c ", 201,205,205); //print de símbolos
     for(int i = 0; i<opcao; i++){
