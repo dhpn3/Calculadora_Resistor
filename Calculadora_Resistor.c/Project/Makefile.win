@@ -1,0 +1,37 @@
+# Project: Calculadora_Resistor
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = calculadora_resistor_vscode/display.o calculadora_resistor_vscode/input.o calculadora_resistor_vscode/main.o calculadora_resistor_vscode/menus.o
+LINKOBJ  = calculadora_resistor_vscode/display.o calculadora_resistor_vscode/input.o calculadora_resistor_vscode/main.o calculadora_resistor_vscode/menus.o
+LIBS     = -L"C:/Meus Softwares/Dev-Cpp/MinGW64/lib" -L"C:/Meus Softwares/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Meus Softwares/Dev-Cpp/MinGW64/include" -I"C:/Meus Softwares/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Meus Softwares/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Meus Softwares/Dev-Cpp/MinGW64/include" -I"C:/Meus Softwares/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Meus Softwares/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Meus Softwares/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Project.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+calculadora_resistor_vscode/display.o: calculadora_resistor_vscode/display.c
+	$(CC) -c calculadora_resistor_vscode/display.c -o calculadora_resistor_vscode/display.o $(CFLAGS)
+
+calculadora_resistor_vscode/input.o: calculadora_resistor_vscode/input.c
+	$(CC) -c calculadora_resistor_vscode/input.c -o calculadora_resistor_vscode/input.o $(CFLAGS)
+
+calculadora_resistor_vscode/main.o: calculadora_resistor_vscode/main.c
+	$(CC) -c calculadora_resistor_vscode/main.c -o calculadora_resistor_vscode/main.o $(CFLAGS)
+
+calculadora_resistor_vscode/menus.o: calculadora_resistor_vscode/menus.c
+	$(CC) -c calculadora_resistor_vscode/menus.c -o calculadora_resistor_vscode/menus.o $(CFLAGS)
