@@ -5,6 +5,12 @@
 #include <math.h>
 #include <stdlib.h>
 
+enum VALORES_MENU{
+SAIR_MENU = 0,
+MENU_INICIAL,
+NENHUMA_OPERACAO
+};
+
 int display(double result){
     //teste se o resistor é ohms ou kiloohms, desconsiderando a potência e a tolerância de 5% ou 10%
     if(result >= 1000){
@@ -75,16 +81,19 @@ void colors_input(int opcao){
     char fourthcolor[20];
     int first, second, third, fourth;   //valores atribuidos a cada cor | number
 
+    printf("aaaaaa");
+    printf("aqui ok");
+    puts("\nDigite a primeira cor: ");
+    // gets(firstcolor);
+    scanf("%s", firstcolor);
     fflush(stdin);
-    printf("\nDigite a primeira cor: ");
-    gets(firstcolor);
     printf("\nDigite a segunda cor: ");
-    gets(secondcolor);
+     scanf("%s", secondcolor);
     printf("\nDigite a terceira cor: ");
-    gets(thirdcolor);
+     scanf("%s", thirdcolor);
     if(opcao == 4){
         printf("\nDigite a quarta cor: ");
-        gets(fourthcolor);
+         scanf("%s", fourthcolor);
     }
 
     first = menu_cor(firstcolor);
@@ -100,11 +109,13 @@ void colors_input(int opcao){
 void menu_inicial(){
     /*set de quantidade de faixas do resistor pré conversão*/
     int opcao;
+    // typeof(opcao) ValidaOpcao;
+
+
     printf("\nQuantidade de faixas para o resistor (3 ou 4): ");
     scanf("%d", &opcao);
 
-    // validar se a opcao é um int, se não for F
-
+    // if(ValidaOpcao == opcao){}
     printf("\n\tCalculadora para cores de resistores de %d faixas\n\t\t\t", opcao);
     printf("%c%c%c ", 201,205,205); //print de símbolos
     for(int i = 0; i<opcao; i++){
@@ -112,8 +123,9 @@ void menu_inicial(){
     }
     printf("%c%c%c", 205,205,187);
     printf("\n");
-    fflush(stdin);
+    fflush(stdout);
     colors_input(opcao);
+
 }
 
 int main(){
@@ -125,13 +137,13 @@ int main(){
         printf("\n\t0 - Sair\n\t1 - Conversao de cores em valor\n\t2 - Conversao de valor para cores\n\n\t> ");
         scanf("%d", &escolha);
         switch(escolha){
-            case 0:
+            case SAIR_MENU:
                 printf("\nSaindo...");
                 break;
-            case 1:
+            case MENU_INICIAL:
                 menu_inicial();
                 break;
-            case 2:
+            case NENHUMA_OPERACAO:
                 //fazer ainda
                 break;
             default:
